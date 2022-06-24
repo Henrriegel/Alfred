@@ -1,0 +1,14 @@
+Aplicacion de una sistema de cursos 
+
+3 roles (Administrativo, Profesor, Alumno)
+
+Administrador puede añadir mas administradores, 
+contratar profesores e inscribir alumnos
+
+Profesor puede CRUD clases, ver alumnos inscritos en 
+su clase
+
+Alumno puede inscribirse/salirse a una clase 
+
+
+https://source.unsplash.com/random/200x200?sig=1 foto random

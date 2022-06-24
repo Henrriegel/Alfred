@@ -1,0 +1,45 @@
+create database sw17_auth;
+
+use sw17_auth;
+CREATE TABLE `logs` (
+`id` INT(11) NOT NULL AUTO_INCREMENT,
+`uri` VARCHAR(255) NOT NULL,
+`method` VARCHAR(6) NOT NULL,
+`params` TEXT DEFAULT NULL,
+`api_key` VARCHAR(40) NOT NULL,
+`ip_address` VARCHAR(45) NOT NULL,
+`time` INT(11) NOT NULL,
+`rtime` FLOAT DEFAULT NULL,
+`authorized` VARCHAR(1) NOT NULL,
+`response_code` smallint(3) DEFAULT '0',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `keys` (
+`id` INT(11) NOT NULL AUTO_INCREMENT,
+`user_id` INT(11) NOT NULL,
+`key` VARCHAR(40) NOT NULL,
+`level` INT(2) NOT NULL,
+`ignore_limits` TINYINT(1) NOT NULL DEFAULT '0',
+`is_private_key` TINYINT(1)  NOT NULL DEFAULT '0',
+`ip_addresses` TEXT NULL DEFAULT NULL,
+`date_created` INT(11) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `keys` values(null,1,'sw17-key',1,0,0,null, 1646088689);
+
+
+CREATE TABLE tb_usuarios(
+  id_usuario int primary key AUTO_INCREMENT,
+  nombre_usuario varchar(70) not null,
+  apellidos_usuario varchar(70) not null,
+  genero_usuario enum('F','M','X') not null,
+  correo_usuario varchar(140) not null unique,
+  password_usuario varchar(255) not null,
+  rol_usuario enum ('Biblioteca','Usuario') not null,
+  foto_usuario text,
+  status_usuario enum('Activo','Inactivo','Bloqueado') DEFAULT 'Activo',
+  crea_usuario timestamp default CURRENT_TIMESTAMP,
+  modifica_usuario TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
